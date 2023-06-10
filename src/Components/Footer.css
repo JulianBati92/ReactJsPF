@@ -1,0 +1,27 @@
+.custom-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  .location-info {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .useful-links a {
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+  }
+  
+  .useful-links a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import './Footer.css';
 
 const Footer = () => {
   return (
@@ -36,9 +38,15 @@ const Footer = () => {
           <div className="col-md-4">
             <div className="useful-links">
               <ul>
-                <li><a href="/terminos">Términos y condiciones</a></li>
-                <li><a href="/privacidad">Política de privacidad</a></li>
-                <li><a href="/contacto">Contacto</a></li>
+                <li>
+                  <Link to="/contacto">Contacto</Link> {/* Modifica el enlace */}
+                </li>
+                <li>
+                  <a href="/terminos">Términos y condiciones</a>
+                </li>
+                <li>
+                  <a href="/privacidad">Política de privacidad</a>
+                </li>
               </ul>
             </div>
           </div>

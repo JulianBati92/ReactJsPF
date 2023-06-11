@@ -2,6 +2,10 @@
     background-color: #333;
     color: #fff;
     padding: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
   }
   
   .social-icons a {
@@ -23,5 +27,9 @@
   
   .useful-links a:hover {
     text-decoration: underline;
+  }
+  
+  .content-wrapper {
+    padding-bottom: 80px; /* Ajusta la altura según tu diseño */
   }
   

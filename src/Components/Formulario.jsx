@@ -1,39 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Footer.css';
 
 const Formulario = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Lógica para enviar el formulario
-    // Puedes agregar aquí el código necesario para enviar los datos del formulario a través de una solicitud HTTP o realizar otras acciones necesarias.
-  };
-
   return (
-    <div className="container">
-      <h2>Contacto</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container formulario">
+      <h2>Formulario de Contacto</h2>
+      <form>
         <div className="form-group">
-          <label htmlFor="name">Nombre:</label>
-          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} />
+          <label htmlFor="nombre">Nombre:</label>
+          <input type="text" className="form-control" id="nombre" />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="email" className="form-control" id="email" />
         </div>
         <div className="form-group">
-          <label htmlFor="message">Mensaje:</label>
-          <textarea id="message" name="message" value={formData.message} onChange={handleChange}></textarea>
+          <label htmlFor="mensaje">Mensaje:</label>
+          <textarea className="form-control" id="mensaje" rows="5"></textarea>
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit" className="btn btn-primary">Enviar</button>
       </form>
     </div>
   );

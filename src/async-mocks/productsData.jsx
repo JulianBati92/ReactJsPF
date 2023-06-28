@@ -3,7 +3,7 @@ const items = [
     id: 1,
     title: "Set Completo Matteoli",
     description: "Descripción del Set Completo Matteoli",
-    price: 100,
+    price: 10400,
     image: "https://via.placeholder.com/200",
     categoryId: 1,
   },
@@ -11,7 +11,7 @@ const items = [
     id: 2,
     title: "Mate Imperial",
     description: "Descripción del Mate Imperial",
-    price: 200,
+    price: 9000,
     image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/001/127/506/products/dd26c3d5-3791-4c88-9c3c-271058393c9a-4ab77c1048f1899d7c16491919694857-640-0.webp",
     categoryId: 2,
   },
@@ -19,7 +19,7 @@ const items = [
     id: 3,
     title: "Mate Torpedo",
     description: "Descripción del Mate Torpedo",
-    price: 300,
+    price: 8500,
     image: "https://via.placeholder.com/200",
     categoryId: 1,
   },
@@ -27,7 +27,7 @@ const items = [
     id: 4,
     title: "Mate Camionero",
     description: "Descripción del Mate Camionero",
-    price: 400,
+    price: 9500,
     image: "https://via.placeholder.com/200",
     categoryId: 2,
   },
@@ -55,3 +55,4 @@ export function getItem(itemId) {
     }, 1000);
   });
 }
+  

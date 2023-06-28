@@ -1,29 +1,27 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CartContext } from '../Components/cartContext';
-import CartPreview from './CartPreview';
-import './Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { CartContext } from '../Components/CartContext';
 
-const Navbar = () => {
-  const { cartItems } = useContext(CartContext);
-  const cartCount = cartItems.length;
+const Navbar = ({ handleSearchSubmit, handleSearchChange }) => {
+  const navbarLogo = 'Tu Matteoli';
+  const [cartOpen, setCartOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const [showCartPreview, setShowCartPreview] = useState(false);
-
-  const handleCartPreviewToggle = () => {
-    setShowCartPreview(!showCartPreview);
+  const toggleCart = () => {
+    setCartOpen(!cartOpen);
   };
 
-  const closeCartPreview = () => {
-    setShowCartPreview(false);
+  const cartContext = useContext(CartContext);
+  const { cartItems } = cartContext;
+
+  const handleCheckout = () => {
+    navigate('/checkout'); // Navegar a la página Checkout.jsx
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Tu Matteoli
-        </Link>
+        <p className="navbar-brand">{navbarLogo}</p>
         <button
           className="navbar-toggler"
           type="button"
@@ -33,52 +31,60 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon" style={{ backgroundColor: 'transparent' }}></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <Link to="/" className="nav-link">
                 Página principal
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Sobre nosotros
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Redes sociales
-              </Link>
+              <button className="nav-link btn btn-link position-relative" onClick={toggleCart}>
+                <i className="bi bi-cart"></i>
+                Carrito ({cartItems.length})
+              </button>
             </li>
           </ul>
-          <div className="d-flex">
-            <button
-              className="btn btn-outline-light me-2"
-              onClick={handleCartPreviewToggle}
-              onBlur={closeCartPreview}
-            >
-              <i className="bi bi-cart-fill me-1"></i>
-              Carrito ({cartCount})
+          <form className="d-flex" onSubmit={handleSearchSubmit}>
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Busca tus Matteoli"
+              aria-label="Search"
+              onChange={handleSearchChange}
+            />
+            <button className="btn btn-outline-success" type="submit">
+              Buscar
             </button>
-            <form className="d-flex">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Busca tus Matteoli"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Buscar
-              </button>
-            </form>
-          </div>
+          </form>
         </div>
       </div>
-      {showCartPreview && <CartPreview />}
+      {cartOpen && (
+        <div className="cart-popup bg-dark position-absolute top-100 end-0 p-3" style={{ zIndex: 10 }}>
+          <h4 className="text-white">Carrito de compras</h4>
+          {cartItems.length > 0 ? (
+            <ul>
+              {cartItems.map((item) => (
+                <li key={item.id}>
+                  <img src={item.image} alt={item.name} style={{ width: '50px', height: '50px' }} />
+                  <p className="text-white">{item.name}</p>
+                  <p className="text-white">Precio: ${item.price}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-white">No hay productos en el carrito</p>
+          )}
+          <button className="btn btn-primary position-relative z-index-10" onClick={handleCheckout}>
+            Checkout
+          </button>
+        </div>
+      )}
     </nav>
   );
 };
 
 export default Navbar;
+

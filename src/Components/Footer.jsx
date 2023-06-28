@@ -1,11 +1,10 @@
 import React from 'react';
 import { FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-light">
+    <footer className="custom-footer bg-dark text-light mt-auto">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4 text-center">
@@ -39,7 +38,7 @@ const Footer = () => {
             <div className="useful-links">
               <ul>
                 <li>
-                  <Link to="/contacto">Contacto</Link> {/* Modifica el enlace */}
+                  <Link to="/contacto">Contacto</Link>
                 </li>
                 <li>
                   <a href="/terminos">Términos y condiciones</a>
